@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=900, initial-scale=1.0">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    width: 900px;
+    height: 383px;
+    overflow: hidden;
+  }
+
+  .cover {
+    width: 900px;
+    height: 383px;
+    background: #0d1f3c;
+    font-family: 'PingFang SC', 'Microsoft YaHei', Georgia, sans-serif;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,168,16,0.08) 0%, transparent 70%);
+  }
+
+  .container {
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+    padding: 0 40px;
+  }
+
+  .brand-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .brand-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: #ffd666;
+    letter-spacing: 4px;
+    margin-bottom: 6px;
+    text-transform: none;
+  }
+  .brand-sub {
+    font-size: 18px;
+    color: #a0b4c8;
+    letter-spacing: 6px;
+    margin-bottom: 40px;
+  }
+
+  .hook {
+    font-size: 24px;
+    color: #e8edf5;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 36px;
+    border-left: 3px solid #ffd666;
+    padding-left: 20px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .date {
+    font-size: 14px;
+    color: #788a9c;
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="container">
+      <span class="brand-icon">🎯</span>
+      <div class="brand-name">Alpha Hunter</div>
+      <div class="brand-sub">QUANT'S RADAR</div>
+
+      <div class="hook">
+        {{COVER_HOOK_LINE1}}<br>
+        <strong style="color:#ffd666;">{{COVER_KEYWORD1}}</strong>{{COVER_CONNECT}}<strong style="color:#ffd666;">{{COVER_KEYWORD2}}</strong>{{COVER_HOOK_LINE2}}
+      </div>
+
+      <div class="date">{{COVER_DATE}} · 第{{COVER_ISSUE}}期</div>
+    </div>
+  </div>
+</body>
+</html>

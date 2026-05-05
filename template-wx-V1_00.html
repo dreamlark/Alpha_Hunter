@@ -1,0 +1,403 @@
+<!--
+  ═══════════════════════════════════════════════════
+  Quant's Radar V5.3 — 完整修复版（占位符）
+  品牌名：Alpha Hunter
+  ═══════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+</head>
+<body style="margin:0; padding:0; background-color:#f5f5f5; color-scheme:light only;">
+
+<!-- MODULE 01: 深海鎏金标题 -->
+<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
+       style="max-width:677px; width:94%; margin:0 auto; background-color:#0d1f3c; border:1px solid #ffffff; border-collapse:collapse; border-radius:16px; overflow:hidden;">
+<tbody>
+<tr>
+<td valign="top" style="padding:max(24px, env(safe-area-inset-top)) 18px 14px; border:none; background-color:#0d1f3c;">
+  <div style="margin-bottom:12px;">
+    <span style="display:inline-block; width:30px; height:30px; background-color:#d4a810; border-radius:6px; text-align:center; line-height:30px; font-size:16px; vertical-align:top;">🎯</span>
+    <span style="display:inline-block; vertical-align:top; margin-left:8px; padding-top:2px;">
+      <span style="font-family:Georgia,'SimSun',serif; font-size:20px; font-weight:bold; color:#ffd666;">Alpha Hunter</span><br>
+      <span style="font-size:12px; color:#a0b4c8;">Quant's Radar · 量化猎手</span>
+    </span>
+  </div>
+  <div style="font-size:13px; margin-bottom:12px; font-family:'Courier New',Consolas,monospace;">
+    <span style="color:#ffffff;">📅 {{DATE_YMD}} &nbsp;|&nbsp; {{DATE_WEEKDAY}} &nbsp;|&nbsp; 第 {{ISSUE_NO}} 期</span>
+  </div>
+  <div style="margin-bottom:10px; line-height:1.4;">
+    <span style="color:#e6b800; font-size:18px; margin-right:6px;">▎</span>
+    <span style="font-family:Georgia,'SimSun','Noto Serif SC',serif; font-size:20px; font-weight:bold; color:#e8edf5;">{{MAIN_TITLE}}</span>
+  </div>
+  <p style="font-size:14px; color:#99abb8; line-height:1.7; margin:0;">
+    {{SUMMARY_TEXT}}
+  </p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<!-- ═════════ 模块导航 ═════════ -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr>
+    <td style="padding:10px 14px 10px; background-color:#ffffff; border:none; border-left:3px solid #e6b800;">
+      <p style="font-size:13px; color:#1a1a2e; margin:0 0 4px 0;">
+        <strong>📑 全文导航</strong>
+      </p>
+      <p style="font-size:13px; color:#444444; line-height:1.85; margin:0;">
+        <strong>📊 行情概览</strong> — 隔夜外盘指标，四象限定位行情冷暖<br>
+        <strong>🔍 数据切片</strong> — 机构尾盘、指数背离、游资温度三重验证<br>
+        <strong>📈 机构共识</strong> — 热点产业链如何传导，反方风险在哪<br>
+        <strong>🎯 行动指南</strong> — 分时条件触发，标的与进出场信号<br>
+        <strong>📋 昨日复盘</strong> — 判断正误对照，交易执行质量打分<br>
+        <strong>⚠️ 风险总结</strong> — 当前两大风险，一句话防守策略
+      </p>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<!-- MODULE 02: 行情概览 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr><td style="padding:8px 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#e6b800; font-size:16px;">▎</span><span style="color:#1a1a2e; font-size:18px;"><strong>行情概览</strong></span>
+  </td></tr>
+  <tr><td style="padding:0 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#000000; font-size:13px;">◆ 隔夜外盘</span>
+  </td></tr>
+  <tr><td style="padding:0 14px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;">
+    <tbody>
+      <tr>
+        <td width="33%" style="padding:2px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#eef2ff; border-radius:6px; padding:8px 4px; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+            <span style="color:#000000; font-size:12px;">道琼斯</span><br>
+            <span style="color:#1a1a1e; font-size:16px;"><strong>{{DJ_CLOSE}}</strong></span><br>
+            <span style="color:{{DJ_COLOR}}; font-size:12px;"><strong>{{DJ_CHANGE}}</strong></span>
+          </td></tr></tbody></table>
+        </td>
+        <td width="33%" style="padding:2px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#eef2ff; border-radius:6px; padding:8px 4px; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+            <span style="color:#000000; font-size:12px;">纳斯达克</span><br>
+            <span style="color:#1a1a1e; font-size:16px;"><strong>{{NQ_CLOSE}}</strong></span><br>
+            <span style="color:{{NQ_COLOR}}; font-size:12px;"><strong>{{NQ_CHANGE}}</strong></span>
+          </td></tr></tbody></table>
+        </td>
+        <td width="33%" style="padding:2px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#eef2ff; border-radius:6px; padding:8px 4px; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+            <span style="color:#000000; font-size:12px;">标普500</span><br>
+            <span style="color:#1a1a1e; font-size:16px;"><strong>{{SPX_CLOSE}}</strong></span><br>
+            <span style="color:{{SPX_COLOR}}; font-size:12px;"><strong>{{SPX_CHANGE}}</strong></span>
+          </td></tr></tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" style="padding:2px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#eef2ff; border-radius:6px; padding:8px 4px; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+            <span style="color:#000000; font-size:12px;">COMEX黄金</span><br>
+            <span style="color:#1a1a1e; font-size:16px;"><strong>{{GOLD_CLOSE}}</strong></span><br>
+            <span style="color:{{GOLD_COLOR}}; font-size:12px;"><strong>{{GOLD_CHANGE}}</strong></span>
+          </td></tr></tbody></table>
+        </td>
+        <td width="33%" style="padding:2px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#eef2ff; border-radius:6px; padding:8px 4px; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+            <span style="color:#000000; font-size:12px;">WTI原油</span><br>
+            <span style="color:#1a1a1e; font-size:16px;"><strong>{{OIL_CLOSE}}</strong></span><br>
+            <span style="color:{{OIL_COLOR}}; font-size:12px;"><strong>{{OIL_CHANGE}}</strong></span>
+          </td></tr></tbody></table>
+        </td>
+        <td width="33%" style="padding:2px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#eef2ff; border-radius:6px; padding:8px 4px; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+            <span style="color:#000000; font-size:12px;">10Y美债</span><br>
+            <span style="color:#1a1a1e; font-size:16px;"><strong>{{BOND_CLOSE}}</strong></span><br>
+            <span style="color:{{BOND_COLOR}}; font-size:12px;"><strong>{{BOND_CHANGE}}</strong></span>
+          </td></tr></tbody></table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:6px 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#000000; font-size:13px;">◆ 四象限定位</span>
+  </td></tr>
+  <tr><td style="padding:0 14px; background-color:#ffffff; border:none;" align="center">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;">
+    <tbody>
+      <tr>
+        <td width="50%" style="padding:0 3px 3px 0; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#d4edda; border-radius:6px; padding:8px 8px; text-align:left; border:1px solid rgba(0,0,0,0.08);">
+            <span style="color:#155724; font-size:13px;"><strong>💧 量能状态</strong></span><br>
+            <span style="color:#1a1a1e; font-size:14px;"><strong>{{QUAD_VOL_STATUS}}</strong></span><br>
+            <span style="color:#000000; font-size:12px; line-height:1.6;">{{QUAD_VOL_DETAIL}}</span>
+          </td></tr></tbody></table>
+        </td>
+        <td width="50%" style="padding:0 0 3px 3px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#cce5ff; border-radius:6px; padding:8px 8px; text-align:left; border:1px solid rgba(0,0,0,0.08);">
+            <span style="color:#004085; font-size:13px;"><strong>📈 趋势方向</strong></span><br>
+            <span style="color:#1a1a1e; font-size:14px;"><strong>{{QUAD_TREND_STATUS}}</strong></span><br>
+            <span style="color:#000000; font-size:12px; line-height:1.6;">{{QUAD_TREND_DETAIL}}</span>
+          </td></tr></tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" style="padding:3px 3px 0 0; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#f8d7da; border-radius:6px; padding:8px 8px; text-align:left; border:1px solid rgba(0,0,0,0.08);">
+            <span style="color:#721c24; font-size:13px;"><strong>🌡️ 情绪温度</strong></span><br>
+            <span style="color:#1a1a1e; font-size:14px;"><strong>{{QUAD_EMOT_STATUS}}</strong></span><br>
+            <span style="color:#000000; font-size:12px; line-height:1.6;">{{QUAD_EMOT_DETAIL}}</span>
+          </td></tr></tbody></table>
+        </td>
+        <td width="50%" style="padding:3px 0 0 3px; border:none;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr><td style="background-color:#fff3cd; border-radius:6px; padding:8px 8px; text-align:left; border:1px solid rgba(0,0,0,0.08);">
+            <span style="color:#856404; font-size:13px;"><strong>⚡ 风险偏好</strong></span><br>
+            <span style="color:#1a1a1e; font-size:14px;"><strong>{{QUAD_RISK_STATUS}}</strong></span><br>
+            <span style="color:#000000; font-size:12px; line-height:1.6;">{{QUAD_RISK_DETAIL}}</span>
+          </td></tr></tbody></table>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </td></tr>
+
+  <!-- 统一空白间距 -->
+  <tr><td style="padding:0; height:6px; background-color:#ffffff; border:none; font-size:0; line-height:0;">&nbsp;</td></tr>
+
+  <!-- 定位总结：与数据切片/复盘总结卡片完全一致 -->
+  <tr><td style="padding:0 14px 8px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#fffdf0; border-radius:6px; padding:10px 14px; border-left:3px solid #ffd666; border-top:none; border-right:none; border-bottom:none;">
+        <span style="color:#cc8800; font-size:12px; line-height:1.5;"><strong>📍 定位：</strong>{{QUAD_SUMMARY}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+</tbody>
+</table>
+
+<!-- MODULE 03: 昨日数据切片 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr><td style="padding:8px 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#e6b800; font-size:16px;">▎</span><span style="color:#1a1a2e; font-size:18px;"><strong>昨日数据切片</strong></span>
+  </td></tr>
+  <tr><td style="padding:0 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#999999; font-size:12px;">{{YESTERDAY_DATE}} · 三维验证</span>
+  </td></tr>
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#4a6cf7; font-size:13px;"><strong>🟢 尾盘机构动向</strong></span><br>
+        <span style="color:#444444; font-size:13px; line-height:1.5;">{{PAPER1_SIGNAL}}</span><br>
+        <span style="color:#999999; font-size:12px;">→ {{PAPER1_GUIDANCE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#4a6cf7; font-size:13px;"><strong>🟢 指数个股背离</strong></span><br>
+        <span style="color:#444444; font-size:13px; line-height:1.5;">{{PAPER2_SIGNAL}}</span><br>
+        <span style="color:#999999; font-size:12px;">→ {{PAPER2_GUIDANCE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#4a6cf7; font-size:13px;"><strong>🟢 游资情绪温度</strong></span><br>
+        <span style="color:#444444; font-size:13px; line-height:1.5;">{{PAPER3_SIGNAL}}</span><br>
+        <span style="color:#999999; font-size:12px;">→ {{PAPER3_GUIDANCE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <tr><td style="padding:0 14px 10px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#fff8e6; border-radius:6px; padding:10px 14px; border-left:3px solid #e8c84a;">
+        <span style="color:#7d5a00; font-size:13px; line-height:1.5;">💡 <strong>锦囊：</strong>{{OVERNIGHT_SUMMARY}}<br>
+        <span style="color:#7d5a00; font-size:12px;">🔍 <strong>三维分歧处理：</strong>{{CONSENSUS_DIVERGENCE_RULE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+</tbody>
+</table>
+
+<!-- MODULE 04: 机构共识与主线传导 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr><td style="padding:8px 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#e6b800; font-size:16px;">▎</span><span style="color:#1a1a2e; font-size:18px;"><strong>机构共识与主线传导</strong></span>
+  </td></tr>
+  <!-- 主线一 -->
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#1a1a2e; font-size:15px;"><strong>{{MAINLINE_1_ICON}} {{MAINLINE_1_TITLE}}</strong></span><br>
+        <span style="color:#888888; font-size:12px;">🎯 确定性：{{MAINLINE_1_CONF}} · 🕐 时间维度：{{MAINLINE_1_TIME}} · 🔄 周期阶段：{{MAINLINE_1_STAGE}}</span><br>
+        <span style="color:#333333; font-size:13px; line-height:1.6;">{{MAINLINE_1_BODY}}</span><br>
+        <span style="color:#444444; font-size:12px;">📌 <strong>链路：</strong>{{MAINLINE_1_CHAIN}}</span><br>
+        <span style="color:#cc3333; font-size:12px;">⚡ <strong>反方观点：</strong>{{MAINLINE_1_COUNTER}}</span><br>
+        <span style="color:#555555; font-size:12px;">🔮 <strong>预期差：</strong>{{MAINLINE_1_EXPECTATION_GAP}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <!-- 主线二 -->
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#1a1a2e; font-size:15px;"><strong>{{MAINLINE_2_ICON}} {{MAINLINE_2_TITLE}}</strong></span><br>
+        <span style="color:#888888; font-size:12px;">🎯 确定性：{{MAINLINE_2_CONF}} · 🕐 时间维度：{{MAINLINE_2_TIME}} · 🔄 周期阶段：{{MAINLINE_2_STAGE}}</span><br>
+        <span style="color:#333333; font-size:13px; line-height:1.6;">{{MAINLINE_2_BODY}}</span><br>
+        <span style="color:#444444; font-size:12px;">📌 <strong>链路：</strong>{{MAINLINE_2_CHAIN}}</span><br>
+        <span style="color:#cc3333; font-size:12px;">⚡ <strong>反方观点：</strong>{{MAINLINE_2_COUNTER}}</span><br>
+        <span style="color:#555555; font-size:12px;">🔮 <strong>预期差：</strong>{{MAINLINE_2_EXPECTATION_GAP}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+</tbody>
+</table>
+
+<!-- MODULE 05: 今日行动指南 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr><td style="padding:8px 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#e6b800; font-size:16px;">▎</span><span style="color:#1a1a2e; font-size:18px;"><strong>今日行动指南</strong></span>
+  </td></tr>
+  <tr><td style="padding:4px 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#000000; font-size:13px;"><strong>📌 今日总仓位上限：{{POSITION_LIMIT}}</strong></span>
+  </td></tr>
+  <tr><td style="padding:4px 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#999999; font-size:12px;">{{PLAN_VALIDITY_NOTE}}</span>
+  </td></tr>
+  <tr><td style="padding:4px 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#8e44ad; font-size:13px;"><strong>◆ 条件→操作</strong></span>
+  </td></tr>
+  <tr><td style="padding:0 14px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;">
+    <tbody>
+      <tr>
+        <td width="14%" style="background-color:#1a1a2e; padding:6px 8px; border:none; border-radius:4px 0 0 0;">
+          <span style="color:#e8c84a; font-size:12px;"><strong>时段</strong></span>
+        </td>
+        <td width="72%" style="background-color:#1a1a2e; padding:6px 8px; border:none;">
+          <span style="color:#e8c84a; font-size:12px;"><strong>条件 → 操作</strong></span>
+        </td>
+        <td width="14%" style="background-color:#1a1a2e; padding:6px 8px; text-align:center; border:none; border-radius:0 4px 0 0;">
+          <span style="color:#e8c84a; font-size:12px;"><strong>概率</strong></span>
+        </td>
+      </tr>
+      {{PREDICTION_ROWS}}
+    </tbody>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:6px 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#e74c3c; font-size:13px;"><strong>◆ 今日焦点标的</strong></span>
+  </td></tr>
+  <!-- 热点一 -->
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#1a1a2e; font-size:14px;"><strong>{{HOTSPOT1_ICON}} {{HOTSPOT1_TITLE}}</strong></span><br>
+        <span style="color:{{HOTSPOT1_CONF_COLOR}}; font-size:12px;">{{HOTSPOT1_CONF}}</span><br>
+        <span style="color:#444444; font-size:12px;"><strong>最优标的：{{HOTSPOT1_KEYSTOCK}}</strong> | 异动触发：{{HOTSPOT1_TRIGGER}}</span><br>
+        <span style="color:#555555; font-size:12px;">观察池：{{HOTSPOT1_STOCKS}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <!-- 热点二 -->
+  <tr><td style="padding:0 14px 8px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#1a1a2e; font-size:14px;"><strong>{{HOTSPOT2_ICON}} {{HOTSPOT2_TITLE}}</strong></span><br>
+        <span style="color:{{HOTSPOT2_CONF_COLOR}}; font-size:12px;">{{HOTSPOT2_CONF}}</span><br>
+        <span style="color:#444444; font-size:12px;"><strong>最优标的：{{HOTSPOT2_KEYSTOCK}}</strong> | 异动触发：{{HOTSPOT2_TRIGGER}}</span><br>
+        <span style="color:#555555; font-size:12px;">观察池：{{HOTSPOT2_STOCKS}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+</tbody>
+</table>
+
+<!-- MODULE 06: 复盘昨日 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr><td style="padding:8px 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#e6b800; font-size:16px;">▎</span><span style="color:#1a1a2e; font-size:18px;"><strong>复盘昨日</strong></span>
+  </td></tr>
+  <tr><td style="padding:0 14px 2px; background-color:#ffffff; border:none;">
+    <span style="color:#999999; font-size:12px;">{{REVIEW_DATE}} · 判断{{REVIEW_CORRECT_COUNT}}/{{REVIEW_TOTAL_COUNT}}正确，执行{{REVIEW_EXEC_GOOD}}/{{REVIEW_TOTAL_COUNT}}优秀</span>
+  </td></tr>
+  <!-- 复盘条目1 -->
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:8px 14px; border:none;">
+        <span style="color:{{REVIEW_1_RESULT_COLOR}}; font-size:13px;"><strong>{{REVIEW_1_RESULT}} {{REVIEW_1_TITLE}}</strong></span>
+        <span style="color:#444444; font-size:12px;">— {{REVIEW_1_LESSON}}</span><br>
+        <span style="color:#444444; font-size:12px;">执行：{{REVIEW_1_EXEC}} | 评分：{{REVIEW_1_SCORE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <!-- 复盘条目2 -->
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:8px 14px; border:none;">
+        <span style="color:{{REVIEW_2_RESULT_COLOR}}; font-size:13px;"><strong>{{REVIEW_2_RESULT}} {{REVIEW_2_TITLE}}</strong></span>
+        <span style="color:#444444; font-size:12px;">— {{REVIEW_2_LESSON}}</span><br>
+        <span style="color:#444444; font-size:12px;">执行：{{REVIEW_2_EXEC}} | 评分：{{REVIEW_2_SCORE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <!-- 复盘条目3 -->
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#f8f9fc; border-radius:6px; padding:8px 14px; border:none;">
+        <span style="color:{{REVIEW_3_RESULT_COLOR}}; font-size:13px;"><strong>{{REVIEW_3_RESULT}} {{REVIEW_3_TITLE}}</strong></span>
+        <span style="color:#444444; font-size:12px;">— {{REVIEW_3_LESSON}}</span><br>
+        <span style="color:#444444; font-size:12px;">执行：{{REVIEW_3_EXEC}} | 评分：{{REVIEW_3_SCORE}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <tr><td style="padding:0 14px 8px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#fff8e6; border-radius:6px; padding:8px 14px; border-left:3px solid #e8c84a;">
+        <span style="color:#7d5a00; font-size:12px;">💡 <strong>改进：</strong>{{REVIEW_SUMMARY}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+</tbody>
+</table>
+
+<!-- MODULE 07: 风险提示与总结 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none; background-color:#ffffff; max-width:677px; width:94%; margin:8px auto 0 auto;">
+<tbody>
+  <tr><td style="padding:8px 14px 4px; background-color:#ffffff; border:none;">
+    <span style="color:#e6b800; font-size:16px;">▎</span><span style="color:#1a1a2e; font-size:18px;"><strong>风险提示</strong></span>
+  </td></tr>
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#0d1f3c; border-radius:6px; padding:10px 14px; border:none;">
+        <span style="color:#ffd666; font-size:14px;"><strong>⚠️ 主要风险</strong></span><br>
+        <span style="color:#c8daf0; font-size:13px; line-height:1.6;">{{RISKS}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <tr><td style="padding:0 14px 3px; background-color:#ffffff; border:none;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;"><tbody><tr>
+      <td style="background-color:#fff8e6; border-radius:6px; padding:10px 14px; border-left:3px solid #e8c84a;">
+        <span style="color:#7d5a00; font-size:13px; line-height:1.5;">📝 <strong>今日总结：</strong>{{SUMMARY}}</span>
+      </td>
+    </tr></tbody></table>
+  </td></tr>
+  <tr><td style="padding:4px 14px 8px; background-color:#ffffff; border:none;">
+    <span style="color:#999999; font-size:11px; line-height:1.5;">本内容仅供学习研究，不构成投资建议 · 市场有风险，投资需谨慎</span>
+  </td></tr>
+</tbody>
+</table>
+
+</body>
+</html>
